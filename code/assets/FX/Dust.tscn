@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/FX/Dust.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 0.00719999, 0.33648, 0.36, 0.160784, 0.14902, 0.313726, 0.862745, 0.545098, 0.00979999, 0.34594, 0.49, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+max_value = 2.0
+_data = [ Vector2( 0, 0.965909 ), 0.0, 0.0, 0, 0, Vector2( 0.494983, 1.50682 ), 0.0199877, 0.0199877, 0, 0, Vector2( 1, 0.00227261 ), -0.129437, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 250, 250, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, -0.2, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 1.0
+angular_velocity = 1.0
+orbit_velocity = 0.01
+orbit_velocity_random = 1.0
+linear_accel = -1.0
+linear_accel_random = 1.0
+radial_accel = 1.0
+radial_accel_random = 1.0
+tangential_accel = 1.0
+tangential_accel_random = 1.0
+damping = 0.1
+damping_random = 1.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="Dust" type="Node2D"]
+position = Vector2( 256, 152 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 200
+speed_scale = 0.1
+explosiveness = 0.25
+visibility_rect = Rect2( -100, -100, 100, 100 )
+process_material = SubResource( 5 )
+
+[node name="Particles2D2" type="CPUParticles2D" parent="."]
+amount = 200
+speed_scale = 0.1
+explosiveness = 0.25
+emission_shape = 2
+emission_rect_extents = Vector2( 250, 250 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -0.2 )
+initial_velocity = 5.0
+initial_velocity_random = 1.0
+angular_velocity = 1.0
+orbit_velocity = 0.01
+orbit_velocity_random = 1.0
+linear_accel = -1.0
+linear_accel_random = 1.0
+radial_accel = 1.0
+radial_accel_random = 1.0
+tangential_accel = 1.0
+tangential_accel_random = 1.0
+damping = 0.1
+damping_random = 1.0
+scale_amount = 2.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 1 )

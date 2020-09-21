@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/FX/Water2D/water_diffuse.png" type="Texture" id=1]
+[ext_resource path="res://assets/FX/Water2D/water_uv_offset.png" type="Texture" id=2]
+[ext_resource path="res://assets/FX/WaterSidescroll2D/WaterSidescroll2D.gd" type="Script" id=3]
+[ext_resource path="res://assets/FX/WaterSidescroll2D/water_sidescroll_2D_full.shader" type="Shader" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.37037, 0.548148, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.211765, 0.211765, 0.211765, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 4 )
+shader_param/water_tint = Color( 0.0470588, 0.490196, 0.0745098, 1 )
+shader_param/shadow_color = Color( 0.117647, 0.286275, 0.00784314, 1 )
+shader_param/distortion_scale = Vector2( 10, 10 )
+shader_param/distortion_amplitude = 0.01
+shader_param/distortion_time_scale = 0.05
+shader_param/water_time_scale = 0.05
+shader_param/reflection_intensity = 1.0
+shader_param/scale = Vector2( 7.49668, 1.51649 )
+shader_param/zoom_y = 0.529732
+shader_param/aspect_ratio = 1.0
+shader_param/tile_factor = 10.0
+shader_param/transform = Basis( 1, 0, 0, 0.291, 1.822, 0.555, 0, 0, 1 )
+shader_param/shore_color = Color( 0.752941, 0.796078, 0.760784, 1 )
+shader_param/shore_size = 0.036
+shader_param/shore_smoothness = 0.03
+shader_param/shore_height_factor = 0.01
+shader_param/transition_gradient = SubResource( 2 )
+shader_param/distortion_map = ExtResource( 2 )
+
+[node name="Water2DSide" type="Sprite"]
+light_mask = 4
+material = SubResource( 3 )
+use_parent_material = true
+position = Vector2( 961.506, 901.105 )
+scale = Vector2( 7.49668, 1.51649 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )

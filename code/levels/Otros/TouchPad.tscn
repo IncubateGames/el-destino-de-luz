@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Touchpad/TouchPad.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/Otros/TouchPad.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+
+[node name="TouchPad" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="TouchPad" parent="TouchPad" instance=ExtResource( 1 )]
+position = Vector2( 160, 488 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="TouchPad2" parent="TouchPad" instance=ExtResource( 1 )]
+position = Vector2( 904, 448 )
+scale = Vector2( 2, 2 )
+
+[node name="Up" parent="TouchPad/TouchPad2" index="0"]
+visible = true
+position = Vector2( -21.3333, -5.33334 )
+
+[node name="Left" parent="TouchPad/TouchPad2" index="1"]
+visible = false
+position = Vector2( -101.333, -5.33334 )
+
+[node name="Right" parent="TouchPad/TouchPad2" index="2"]
+visible = false
+position = Vector2( -21.3333, -5.33334 )
+
+[editable path="TouchPad/TouchPad2"]

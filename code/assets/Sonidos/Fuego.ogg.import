@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Fuego.ogg-67cb5ee5924b4d5a8eeb540c04ece2c2.oggstr"
+
+[deps]
+
+source_file="res://assets/Sonidos/Fuego.ogg"
+dest_files=[ "res://.import/Fuego.ogg-67cb5ee5924b4d5a8eeb540c04ece2c2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

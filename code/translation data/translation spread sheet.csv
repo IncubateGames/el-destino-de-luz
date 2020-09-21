@@ -1,0 +1,13 @@
+﻿keys;en;es
+menu_lbl_titulo;EL DESTINO DE LUZ;EL DESTINO DE LUZ
+menu_btn_jugar;PLAY;JUGAR
+menu_lbl_idioma;Languaje;Idioma
+pausa_btn_volver;Go to menu;Volver al menu
+pausa_btn_salir;Exit game;Salir del juego
+pausa_btn_reiniciar;Restart level;Reiniciar Nivel
+intro_lbl_1;to reach the Magic Orb;para alcanzar el Orbe magico
+intro_lbl_2;Before your light goes out;Antes de que tu luz se apague
+intro_lbl_3;Follow the path of light;Sigue el camino de la luz
+input_lbl_menu;Menu;Menu
+input_lbl_jugar;Play;Jugar
+playerwind_lbl_win;You have fulfilled your mission;Has cumplido con tu misión

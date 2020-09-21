@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 0 )
+
+[node name="Particles2D" type="CPUParticles2D"]
+light_mask = 4
+material = SubResource( 1 )
+scale = Vector2( 2, 2 )
+z_index = 1
+amount = 64
+local_coords = false
+direction = Vector2( -1, 0 )
+spread = 32.24
+gravity = Vector2( 0, 50 )
+initial_velocity = 25.0
+initial_velocity_random = 1.0
+tangential_accel = 10.0
+tangential_accel_random = 1.0
+angle = 25.0
+angle_random = 1.0
+color_ramp = SubResource( 2 )

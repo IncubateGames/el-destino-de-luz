@@ -1,0 +1,224 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Transiciones/Fade.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Props/BloqueAntorcha/BloqueAntorcha.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/world_environment.tres" type="Environment" id=4]
+[ext_resource path="res://levels/Otros/Intro.gd" type="Script" id=5]
+[ext_resource path="res://assets/Sonidos/Fuego.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/Sonidos/viento.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/FX/Dust.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/UI/TouchIcons/lineLight45.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/HBoxContainer/Label3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/HBoxContainer/Label3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 1.7, 2.7, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/HBoxContainer/Label1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.2, 5.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/HBoxContainer/Label1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.2, 3.7, 4.7, 5.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/HBoxContainer/Label2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5.2, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/HBoxContainer/Label2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 5.2, 5.7, 6.2, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fuego"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fuego:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15, 20 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -15.0, -80.0 ]
+}
+
+[node name="Intro" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Fade" parent="." instance=ExtResource( 1 )]
+layer = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Skip" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.454902 )
+position = Vector2( 978.22, 4.65523 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 9 )
+action = "ui_start"
+visibility_mode = 1
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+follow_viewport_scale = 3.0
+
+[node name="Control" type="Control" parent="CanvasLayer3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer3/Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -506.531
+margin_top = -344.725
+margin_right = -506.531
+margin_bottom = -330.725
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer3/Control/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0.428571 )
+margin_left = 479.0
+margin_right = 545.0
+margin_bottom = 14.0
+text = "intro_lbl_3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="Label" parent="CanvasLayer3/Control/HBoxContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -88.0
+margin_top = -64.0
+margin_right = 97.0
+margin_bottom = -48.0
+text = "intro_lbl_1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer3/Control/HBoxContainer"]
+visible = false
+margin_left = -88.0
+margin_top = -64.0
+margin_right = 107.0
+margin_bottom = -48.0
+text = "intro_lbl_2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer3"]
+autoplay = "Idle"
+playback_speed = 0.5
+anims/Idle = SubResource( 1 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enable = true
+follow_viewport_scale = 4.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer2"]
+environment = ExtResource( 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer2"]
+color = Color( 0, 0, 0, 1 )
+
+[node name="BloquAntorcha" parent="CanvasLayer2" instance=ExtResource( 2 )]
+position = Vector2( -0.363678, 16.247 )
+
+[node name="Antorcha2" parent="CanvasLayer2/BloquAntorcha" index="0"]
+SonidoActivo = false
+
+[node name="Dust" parent="." instance=ExtResource( 8 )]
+position = Vector2( -0.62561, -0.65625 )
+scale = Vector2( 2, 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 4
+current = true
+
+[node name="Fuego" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -25.0
+autoplay = true
+mix_target = 2
+
+[node name="Viento" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+mix_target = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Fuego"
+anims/Fuego = SubResource( 2 )
+[connection signal="animation_finished" from="CanvasLayer3/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="CanvasLayer2/BloquAntorcha"]

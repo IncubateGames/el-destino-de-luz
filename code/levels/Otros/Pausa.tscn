@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://levels/Otros/Pausa.gd" type="Script" id=1]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+scale = Vector2( 3, 3 )
+transform = Transform2D( 3, 0, 0, 3, 0, 0 )
+
+[node name="Control" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -512.0
+margin_bottom = -300.0
+size_flags_stretch_ratio = 1.74
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+margin_left = 236.0
+margin_top = 72.0
+margin_right = 279.0
+margin_bottom = 86.0
+text = "PAUSA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+margin_right = 341.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+margin_left = 103.0
+margin_top = 66.0
+margin_right = 237.0
+margin_bottom = 134.0
+
+[node name="Volver" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+margin_right = 134.0
+margin_bottom = 20.0
+text = "pausa_btn_volver"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reiniciar" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 134.0
+margin_bottom = 44.0
+text = "pausa_btn_reiniciar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Salir" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 134.0
+margin_bottom = 68.0
+text = "pausa_btn_salir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Volver" to="Control" method="_on_Volver_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Reiniciar" to="Control" method="_on_Reiniciar_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Salir" to="Control" method="_on_Salir_pressed"]

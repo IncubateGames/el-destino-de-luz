@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/BootSplash2.png-56d8d02ab380a64aaede70d8bae05c3e.image"
+
+[deps]
+
+source_file="res://BootSplash2.png"
+dest_files=[ "res://.import/BootSplash2.png-56d8d02ab380a64aaede70d8bae05c3e.image" ]
+
+[params]
+

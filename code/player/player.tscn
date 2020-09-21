@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://player/player.png" type="Texture" id=2]
+[ext_resource path="res://assets/Luces/2DLight.png" type="Texture" id=3]
+[ext_resource path="res://player/Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://assets/FX/amazingexplosion_cpu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/FX/amazingexplosion.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.1078, 7.9 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Blink"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.462745 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.321569 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_AnimLight_finish"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "LifeLight"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 24.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.7, 1.01717 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 24.1, 29.7, 38.4, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.3, 0.3, 0.2, 0.1, 0.01 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 38.2, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "player_stop_anim"
+}, {
+"args": [  ],
+"method": "player_dead"
+} ]
+}
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+light_mask = 0
+position = Vector2( 80, 464 )
+collision_mask = 0
+collision/safe_margin = 0.01
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+Explosion_CPU = ExtResource( 5 )
+Explosion = ExtResource( 6 )
+
+[node name="sprite" type="Sprite" parent="."]
+light_mask = 2
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+z_index = 2
+texture = ExtResource( 3 )
+texture_scale = 0.3
+color = Color( 1, 1, 1, 0.462745 )
+energy = 1.7
+range_item_cull_mask = 6
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_item_cull_mask = 4
+
+[node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 4
+position = Vector2( -30.1882, 36.6032 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+process_mode = 0
+limit_left = 0
+limit_top = -1
+limit_right = 849
+limit_bottom = 512
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+offset_h = 1.0
+offset_v = -0.05
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 4 )
+target = NodePath("..")
+
+[node name="AnimLight" type="AnimationPlayer" parent="."]
+autoplay = "Blink"
+anims/Blink = SubResource( 2 )
+
+[node name="LifeAnim" type="AnimationPlayer" parent="."]
+autoplay = "LifeLight"
+anims/LifeLight = SubResource( 3 )

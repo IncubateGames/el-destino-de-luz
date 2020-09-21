@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Transiciones/Fade.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Props/Antorchas/Antorcha.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.png" type="Texture" id=3]
+[ext_resource path="res://levels/world_environment.tres" type="Environment" id=4]
+[ext_resource path="res://assets/Sprites/obstacle.png" type="Texture" id=5]
+[ext_resource path="res://assets/Props/Antorchas/AntorchaVerde.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Luces/2DLight.png" type="Texture" id=7]
+[ext_resource path="res://levels/Otros/PlayerWin.gd" type="Script" id=8]
+[ext_resource path="res://assets/FX/Dust.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/Sonidos/viento.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -12.7083, -14.4768 ), Vector2( -0.286513, -16.9612 ), Vector2( 7.85667, -15.995 ), Vector2( 11.3992, -10.4282 ), Vector2( 14.7117, -3.80326 ), Vector2( 14.7117, -3.80326 ) ]
+}
+
+[node name="PlayerWin" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Fade" parent="." instance=ExtResource( 1 )]
+layer = 2
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+follow_viewport_scale = 3.0
+
+[node name="Control" type="Control" parent="CanvasLayer3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer3/Control"]
+margin_left = -82.0
+margin_top = -70.0417
+margin_right = 98.0
+margin_bottom = -55.0417
+text = "playerwind_lbl_win"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dust" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1.28778, -0.078186 )
+scale = Vector2( 2, 2 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enable = true
+follow_viewport_scale = 4.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer2"]
+environment = ExtResource( 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer2"]
+color = Color( 0, 0, 0, 1 )
+
+[node name="Nivel" type="Node" parent="CanvasLayer2"]
+
+[node name="Light2D" type="Light2D" parent="CanvasLayer2/Nivel"]
+light_mask = 0
+position = Vector2( -12.7083, -14.4768 )
+z_index = 2
+texture = ExtResource( 7 )
+texture_scale = 0.1
+color = Color( 1, 1, 0.945098, 1 )
+energy = 1.5
+range_item_cull_mask = 2
+shadow_item_cull_mask = 0
+
+[node name="player" type="Sprite" parent="CanvasLayer2/Nivel"]
+light_mask = 2
+texture = ExtResource( 3 )
+
+[node name="Node" type="Node" parent="CanvasLayer2/Nivel"]
+
+[node name="Antorcha3" parent="CanvasLayer2/Nivel/Node" instance=ExtResource( 6 )]
+position = Vector2( 32, -24 )
+
+[node name="Fondo2" type="Sprite" parent="CanvasLayer2/Nivel/Node"]
+modulate = Color( 1, 1, 1, 0.564706 )
+light_mask = 4
+position = Vector2( 32, -16 )
+texture = ExtResource( 3 )
+
+[node name="obstacle2" type="Sprite" parent="CanvasLayer2/Nivel/Node"]
+light_mask = 4
+position = Vector2( 32, 0 )
+texture = ExtResource( 5 )
+
+[node name="Node2" type="Node" parent="CanvasLayer2/Nivel"]
+
+[node name="Antorcha2" parent="CanvasLayer2/Nivel/Node2" instance=ExtResource( 2 )]
+position = Vector2( -40, -24 )
+
+[node name="Fondo3" type="Sprite" parent="CanvasLayer2/Nivel/Node2"]
+modulate = Color( 1, 1, 1, 0.298039 )
+light_mask = 4
+position = Vector2( -40, 0 )
+z_index = 2
+texture = ExtResource( 3 )
+
+[node name="Fondo" type="Sprite" parent="CanvasLayer2/Nivel/Node2"]
+modulate = Color( 1, 1, 1, 0.141176 )
+light_mask = 4
+position = Vector2( -40, -16 )
+z_index = 2
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/Nivel"]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 4
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
