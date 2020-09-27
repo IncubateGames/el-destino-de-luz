@@ -98,24 +98,25 @@ scale = Vector2( 0.068688, 0.068688 )
 texture = ExtResource( 9 )
 
 [node name="Logo Linkedin" type="Sprite" parent="Fade/UI/GUI/Control/Logos"]
+visible = false
 position = Vector2( 191.704, 147.946 )
 scale = Vector2( 0.17057, 0.17057 )
 texture = ExtResource( 8 )
 
 [node name="Autor" type="Label" parent="Fade/UI/GUI"]
-visible = false
+modulate = Color( 0.309804, 0.309804, 0.309804, 1 )
 light_mask = 0
-margin_left = 97.1919
-margin_top = 123.793
-margin_right = 247.192
-margin_bottom = 140.793
-text = "Incubate Games - 2020"
+margin_left = 137.193
+margin_top = 128.144
+margin_right = 306.193
+margin_bottom = 145.144
+rect_scale = Vector2( 0.64, 0.660794 )
+text = "Oskit Producciones - 2020"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Version" type="Label" parent="Fade/UI/GUI"]
-visible = false
 modulate = Color( 0.360784, 0.317647, 0.364706, 1 )
 light_mask = 0
 margin_left = -256.0
@@ -129,10 +130,14 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="Fade/UI/GUI"]
-margin_left = -62.8108
-margin_top = 48.027
-margin_right = 59.1892
-margin_bottom = 77.027
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -61.8333
+margin_top = 55.2581
+margin_right = 60.1667
+margin_bottom = 84.2581
 text = "menu_btn_jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -146,10 +151,11 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Fade/UI/GUI/Idioma"]
-margin_left = -251.984
-margin_top = 51.6568
-margin_right = -63.9842
-margin_bottom = 75.6568
+margin_left = 132.654
+margin_top = 78.2108
+margin_right = 320.653
+margin_bottom = 102.211
+rect_scale = Vector2( 0.58, 0.58 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -165,10 +171,10 @@ __meta__ = {
 
 [node name="OptionButton" type="OptionButton" parent="Fade/UI/GUI/Idioma/HBoxContainer"]
 margin_left = 113.0
-margin_right = 188.0
+margin_right = 176.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 60, 20 )
-text = "Es   "
+text = "Es"
 icon = ExtResource( 10 )
 flat = true
 items = [ "Es", ExtResource( 10 ), false, 0, null, "En", ExtResource( 10 ), false, 1, null ]

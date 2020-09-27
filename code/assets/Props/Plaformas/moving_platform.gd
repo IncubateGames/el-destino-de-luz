@@ -17,6 +17,8 @@ onready var anim := ($plataform/AnimationPlayer)
 onready var area := ($plataform/Area2D)
 onready var spikes :=  ($plataform/Spikes)
 onready var timerAparecer := ($plataform/TimerAparecer)
+onready var fxMover := ($fxMover)
+onready var fxDead := ($fxDead)
 
 var Explosion
 
@@ -129,9 +131,11 @@ func _on_Area2D_body_entered(body):
 			anim.play("Desaparecer")
 
 func play_fx():
+	fxMover.play()
 	pass
 
 func stop_fx():
+	fxMover.stop()
 	pass
 
 
@@ -161,6 +165,8 @@ func _on_Timer_timeout():
 	platform.global_position = _Posicion_Original
 	_is_tween_complete = true
 	anim.play("Aparecer")
+	fxMover.stop()
+	fxDead.stop()
 	var col = platform.get_node("collision")
 	col.disabled = true
 
@@ -168,7 +174,8 @@ func explode():
 	var boom = Explosion.instance()
 	boom.position = platform.global_position
 	get_parent().add_child(boom)
-
+	fxMover.stop()
+	fxDead.play()
 
 func _on_move_tween_tween_completed(object, key):
 	stop_fx()

@@ -3,6 +3,8 @@ extends KinematicBody2D
 var velocidad := Vector2(200.0,0.0)
 var Explosion
 
+onready var fx_dead := ($fx_dead)
+
 func _ready():
 	var name = OS.get_name()
 	if name == "Android" or name == "iOS":
@@ -24,12 +26,15 @@ func _physics_process(delta):
 		explode()
 		if collision.collider.has_method("hit"):
 			collision.collider.hit()
+		
+		yield(get_tree().create_timer(0.1),"timeout")
 		queue_free()
 
 func explode():
 	var boom = Explosion.instance()
 	boom.position = position
 	get_parent().add_child(boom)
+	fx_dead.play()
 	#get_tree().current_scene.add_child(boom)
 
 

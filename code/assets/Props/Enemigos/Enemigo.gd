@@ -10,6 +10,7 @@ onready var _bullet := preload("res://assets/Props/Bullets/Bullet.tscn")
 onready var _player := ($AnimationPlayer)
 onready var _collision_mask :int= ($Area2D).collision_mask
 onready var _spikes :=  ($Cara/Spikes)
+onready var _fx_fire := ($fx_fire)
 
 var _curreny_animation_name = "Idle"
 var _is_body_left := true
@@ -49,6 +50,7 @@ func fire():
 		bullet.global_position = _spawn
 		bullet.global_rotation_degrees = _ang
 		get_tree().current_scene.add_child(bullet)
+		_fx_fire.play()
 		yield(get_tree().create_timer(0.15),"timeout")
 
 

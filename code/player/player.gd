@@ -23,6 +23,7 @@ export(PackedScene) var Explosion
 
 onready var AnimLight := ($AnimLight)
 onready var ShakeCamera2D := ($Camera2D)
+onready var FXDead := ($fxDead)
 
 var _motion = Vector2(0,0)
 var _is_Jump :bool = false
@@ -90,6 +91,9 @@ func give_hit():
 	ShakeCamera2D.add_trauma(0.5)
 	player_dead()
 
+func playFXExplode():
+	FXDead.play()
+
 func explode():
 	var name = OS.get_name()
 	var boom
@@ -99,4 +103,5 @@ func explode():
 		boom = Explosion.instance()
 	boom.position = position
 	get_parent().add_child(boom)
+	playFXExplode()
 	#get_tree().current_scene.add_child(boom)

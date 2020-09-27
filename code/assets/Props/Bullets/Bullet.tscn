@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Props/Bullets/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/Luces/2DLight.png" type="Texture" id=2]
 [ext_resource path="res://assets/FX/fx_bullet_trail.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/FX/fx_bullet_trail_cpu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Sonidos/fx_dead.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 0.781563, 0.917416 )
@@ -46,4 +47,12 @@ range_item_cull_mask = 7
 
 [node name="Particles2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( -2.37559, 0 )
+
+[node name="fx_dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = 10.103
+pitch_scale = 2.0
+max_distance = 500.0
+attenuation = 0.258816
+bus = "Fire"
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

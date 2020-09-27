@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fx_plataforma_sobre.ogg-5700931b6ba7e23732cb70b8195f0c2b.oggstr"
+
+[deps]
+
+source_file="res://assets/Sonidos/fx_plataforma_sobre.ogg"
+dest_files=[ "res://.import/fx_plataforma_sobre.ogg-5700931b6ba7e23732cb70b8195f0c2b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
