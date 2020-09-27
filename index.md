@@ -6,4 +6,4 @@
 
 ### Visita [itch.io](https://oskit-producciones.itch.io/el-destino-de-luz) para saber mas del juego
 
-### Has click para [Aqui](https://oskit-producciones.github.io/el-destino-de-luz/WebGL) para jugar
+### Has click [Aqui](https://oskit-producciones.github.io/el-destino-de-luz/WebGL) para jugar
