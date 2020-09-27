@@ -34,12 +34,13 @@ var _Posicion_Original := Vector2()
 func _ready():
 	if Engine.editor_hint:
 		return
+		
 	var name = OS.get_name()
-	if name == "Android" or name == "iOS":
+	if name == "Android" or name == "iOS" or name == "HTML5":
 		Explosion = preload("res://assets/FX/amazingexplosion_plataforma_cpu.tscn")
 	else:
 		Explosion = preload("res://assets/FX/amazingexplosion_plataforma.tscn")
-
+	#Explosion = preload("res://assets/FX/amazingexplosion_plataforma_cpu.tscn")
 	_Posicion_Original = platform.global_position
 	if move_to:
 		var node = get_node(move_to)

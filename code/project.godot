@@ -24,6 +24,7 @@ config/name="El destino de Luz"
 run/main_scene="res://levels/Otros/Menu.tscn"
 boot_splash/image="res://BootSplash.png"
 config/icon="res://icono2.png"
+config/windows_native_icon="res://icono.ico"
 config/quit_on_go_back=false
 
 [autoload]
@@ -129,6 +130,7 @@ quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation.mobile=2
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
+vram_compression/import_etc=true
 gles2/compatibility/disable_half_float=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 quality/depth/hdr.mobile=true

@@ -46,19 +46,23 @@ func _ready():
 	connect("PlayerWin",self,"on_Player_Win")
 	connect("FadeEnd",self,"on_FadeEnd")
 	
-	connect("TouchpadUpPressed",self,"on_Touchpad_Up_Pressed")
-	connect("TouchpadLeftPressed",self,"on_Touchpad_Left_Pressed")
-	connect("TouchpadRightPressed",self,"on_Touchpad_Right_Pressed")
-	connect("TouchpadDownPressed",self,"on_Touchpad_Down_Pressed")
+	var name = OS.get_name()
+	if (name == "Android" or name == "iOS"):
+		connect("TouchpadUpPressed",self,"on_Touchpad_Up_Pressed")
+		connect("TouchpadLeftPressed",self,"on_Touchpad_Left_Pressed")
+		connect("TouchpadRightPressed",self,"on_Touchpad_Right_Pressed")
+		connect("TouchpadDownPressed",self,"on_Touchpad_Down_Pressed")
 	
 	_pausa_menu = UI_Pausa.instance()
 	_pausa_menu.get_child(0).visible = false
 	add_child(_pausa_menu)
 	
-	_touchpad = UI_Touchpad.instance()
-	_touchpad.get_child(0).visible = false
-	add_child(_touchpad)
-	_touchpad = _touchpad.get_child(0)
+	if (name == "Android" or name == "iOS"):
+		_touchpad = UI_Touchpad.instance()
+		_touchpad.get_child(0).visible = false
+		add_child(_touchpad)
+		_touchpad = _touchpad.get_child(0)
+	
 	leer_preferencias()
 
 var _motion = Vector2(0,0)
@@ -118,12 +122,11 @@ func _input(event):
 
 			if (event.is_action_just_pressed("move_up")):
 				_is_Jump = true
-
-func _unhandled_input(event):
+				
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		_old_pos = event.relative;
 
-	if event.is_action_pressed("ui_start"):
+	if event.is_action_pressed("ui_start") or event.is_action_pressed("ui_accept"):
 		match Nivel_tipo:
 			TIPO_NIVEL.I_JUEGO:
 				pass

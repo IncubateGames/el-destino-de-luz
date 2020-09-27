@@ -9,7 +9,7 @@ onready var tween = $move_tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	init_tween()
+	_init_tween()
 	
 func _init_tween() -> void:
 	move_to = move_to * cell_size

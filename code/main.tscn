@@ -227,42 +227,24 @@ collision_layer = 2
 
 [node name="moving_platform2" parent="FX/level1/Plataformas" instance=ExtResource( 6 )]
 position = Vector2( 800, 472 )
-idle_duration = 1.0
 move_to = NodePath("Position2D")
-_spike = false
-_destruible = true
-_restart = true
-_center_zona_dection = false
 _time = 2.0
-_tipo_plataforma = 0
 
 [node name="Position2D" type="Position2D" parent="FX/level1/Plataformas/moving_platform2"]
 position = Vector2( 0, -384 )
 
 [node name="moving_platform" parent="FX/level1/Plataformas" instance=ExtResource( 6 )]
 position = Vector2( 48, 472 )
-idle_duration = 1.0
 move_to = NodePath("Position2D")
-_spike = false
-_destruible = true
-_restart = true
-_center_zona_dection = false
 _time = 2.0
-_tipo_plataforma = 0
 
 [node name="Position2D" type="Position2D" parent="FX/level1/Plataformas/moving_platform"]
 position = Vector2( 0, -296 )
 
 [node name="moving_platform3" parent="FX/level1/Plataformas" instance=ExtResource( 6 )]
 position = Vector2( 288, 312 )
-idle_duration = 1.0
 move_to = NodePath("Position2D")
-_spike = false
-_destruible = true
-_restart = true
-_center_zona_dection = false
 _time = 2.0
-_tipo_plataforma = 0
 
 [node name="Position2D" type="Position2D" parent="FX/level1/Plataformas/moving_platform3"]
 position = Vector2( 192, 0 )
@@ -273,10 +255,7 @@ position = Vector2( 192, 0 )
 position = Vector2( 144, 440 )
 idle_duration = 0.0
 move_to = NodePath("Position2D2")
-_spike = false
 _destruible = false
-_restart = true
-_center_zona_dection = false
 _time = 0.5
 _tipo_plataforma = 2
 
@@ -287,10 +266,7 @@ position = Vector2( 0, 48 )
 position = Vector2( 448, 88 )
 idle_duration = 0.2
 move_to = NodePath("../moving_platformFragil1/Position2D")
-_spike = false
 _destruible = false
-_restart = true
-_center_zona_dection = false
 _time = 1.0
 _tipo_plataforma = 2
 
@@ -301,10 +277,7 @@ position = Vector2( 0, 112 )
 position = Vector2( 480, 88 )
 idle_duration = 0.2
 move_to = NodePath("../moving_platformFragil2/Position2D")
-_spike = false
 _destruible = false
-_restart = true
-_center_zona_dection = false
 _time = 1.0
 _tipo_plataforma = 2
 
@@ -315,10 +288,7 @@ position = Vector2( 0, 112 )
 position = Vector2( 512, 88 )
 idle_duration = 0.2
 move_to = NodePath("../moving_platformFragil3/Position2D")
-_spike = false
 _destruible = false
-_restart = true
-_center_zona_dection = false
 _time = 1.0
 _tipo_plataforma = 2
 
@@ -329,10 +299,7 @@ position = Vector2( 0, 112 )
 position = Vector2( 544, 88 )
 idle_duration = 0.2
 move_to = NodePath("../moving_platformFragil4/Position2D")
-_spike = false
 _destruible = false
-_restart = true
-_center_zona_dection = false
 _time = 1.0
 _tipo_plataforma = 2
 
@@ -343,10 +310,7 @@ position = Vector2( 0, 112 )
 position = Vector2( 576, 88 )
 idle_duration = 0.2
 move_to = NodePath("../moving_platformFragil5/Position2D")
-_spike = false
 _destruible = false
-_restart = true
-_center_zona_dection = false
 _time = 1.0
 _tipo_plataforma = 2
 
@@ -360,8 +324,6 @@ position = Vector2( 224, 232 )
 idle_duration = 0.0
 move_to = NodePath("../moving_platformInversa/Position2D")
 _spike = true
-_destruible = true
-_restart = true
 _center_zona_dection = true
 _time = 0.5
 _tipo_plataforma = 3
@@ -374,8 +336,6 @@ position = Vector2( 256, 232 )
 idle_duration = 0.0
 move_to = NodePath("Position2D")
 _spike = true
-_destruible = true
-_restart = true
 _center_zona_dection = true
 _time = 0.5
 _tipo_plataforma = 3
@@ -388,8 +348,6 @@ position = Vector2( 768, 24 )
 idle_duration = 0.0
 move_to = NodePath("Position2D")
 _spike = true
-_destruible = true
-_restart = true
 _center_zona_dection = true
 _time = 1.0
 _tipo_plataforma = 3
@@ -401,10 +359,7 @@ position = Vector2( 0, 48 )
 
 [node name="moving_platform4" parent="FX/level1/Plataformas/Especial" instance=ExtResource( 6 )]
 position = Vector2( 96, 248 )
-idle_duration = 1.0
 move_to = NodePath("Position2D")
-_spike = false
-_destruible = true
 _restart = false
 _center_zona_dection = true
 _time = 2.0
@@ -415,10 +370,7 @@ position = Vector2( 24, 0 )
 
 [node name="moving_platform5" parent="FX/level1/Plataformas/Especial" instance=ExtResource( 6 )]
 position = Vector2( 640, 280 )
-idle_duration = 1.0
 move_to = NodePath("Position2D")
-_spike = false
-_destruible = true
 _restart = false
 _center_zona_dection = true
 _time = 2.0
@@ -430,10 +382,7 @@ position = Vector2( -32, 0 )
 [node name="moving_platform6" parent="FX/level1/Plataformas/Especial" instance=ExtResource( 6 )]
 position = Vector2( 568, 320 )
 rotation = -1.57079
-idle_duration = 1.0
 move_to = NodePath("Position2D")
-_spike = false
-_destruible = true
 _restart = false
 _center_zona_dection = true
 _time = 2.0
@@ -448,10 +397,7 @@ position = Vector2( 24, -6.10352e-05 )
 position = Vector2( 728, 280 )
 idle_duration = 0.0
 move_to = NodePath("Position2D")
-_spike = false
-_destruible = true
 _restart = false
-_center_zona_dection = false
 _time = 2.0
 _tipo_plataforma = 5
 
@@ -493,20 +439,16 @@ position = Vector2( 432, 200 )
 
 [node name="Enemigo" parent="FX/level1/Enemigos" instance=ExtResource( 11 )]
 position = Vector2( 664, 296 )
-is_fire_3_bullets = false
 
 [node name="Enemigo3" parent="FX/level1/Enemigos" instance=ExtResource( 11 )]
 position = Vector2( 200, 120 )
-is_fire_3_bullets = false
 
 [node name="Enemigo4" parent="FX/level1/Enemigos" instance=ExtResource( 11 )]
 position = Vector2( 200, 56 )
-is_fire_3_bullets = false
 
 [node name="Enemigo2" parent="FX/level1/Enemigos" instance=ExtResource( 11 )]
 position = Vector2( 648, 472 )
 ocultar_spikes = false
-is_fire_3_bullets = false
 
 [node name="player" parent="FX" instance=ExtResource( 2 )]
 position = Vector2( 88, 456 )

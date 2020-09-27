@@ -4,4 +4,5 @@ extends Node2D
 func _ready():
 	var name = OS.get_name()
 	if !(name == "Android" or name == "iOS"):
-		queue_free()
+		#queue_free()
+		pass

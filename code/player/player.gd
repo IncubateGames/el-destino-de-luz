@@ -24,6 +24,7 @@ export(PackedScene) var Explosion
 onready var AnimLight := ($AnimLight)
 onready var ShakeCamera2D := ($Camera2D)
 onready var FXDead := ($fxDead)
+onready var collisionShape := ($CollisionShape2D)
 
 var _motion = Vector2(0,0)
 var _is_Jump :bool = false
@@ -64,6 +65,7 @@ func _physics_process(delta):
 
 func player_dead():
 	set_physics_process(false)
+	collisionShape.disabled = true
 	visible = false
 	explode()
 	yield(get_tree().create_timer(1.5),"timeout")
@@ -97,7 +99,7 @@ func playFXExplode():
 func explode():
 	var name = OS.get_name()
 	var boom
-	if name == "Android" or name == "iOS":
+	if name == "Android" or name == "iOS" or name == "HTML5":
 		boom = Explosion_CPU.instance()
 	else:
 		boom = Explosion.instance()
