@@ -37,7 +37,7 @@ func _process(delta):
 				_spikes.visible = true
 		update()
 
-func __physics_process(delta):
+func __physics_process():
 	if Engine.editor_hint: 
 		return
 

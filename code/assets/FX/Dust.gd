@@ -8,8 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var name = OS.get_name()
-	if name == "Android" or name == "iOS":
+	if Main.isGLES2():
 		remove_child($Particles2D)
 	else:
 		remove_child($Particles2D2)

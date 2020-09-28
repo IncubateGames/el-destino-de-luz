@@ -5,9 +5,8 @@ var Explosion
 
 onready var fx_dead := ($fx_dead)
 
-func _ready():
-	var name = OS.get_name()
-	if name == "Android" or name == "iOS" or name == "HTML5":
+func _ready():	
+	if Main.isGLES2():
 		Explosion = preload("res://assets/FX/fx_bullet_explosion_cpu.tscn")
 		remove_child($Particles2D)
 	else:

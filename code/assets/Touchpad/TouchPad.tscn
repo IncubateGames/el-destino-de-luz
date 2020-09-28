@@ -15,16 +15,13 @@ visible = false
 position = Vector2( -104, -96 )
 normal = ExtResource( 2 )
 action = "move_up"
-visibility_mode = 1
 
 [node name="Left" type="TouchScreenButton" parent="."]
 position = Vector2( -104, -8 )
 normal = ExtResource( 1 )
 action = "move_left"
-visibility_mode = 1
 
 [node name="Right" type="TouchScreenButton" parent="."]
 position = Vector2( -16, -8 )
 normal = ExtResource( 3 )
 action = "move_right"
-visibility_mode = 1

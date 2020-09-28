@@ -47,5 +47,9 @@ light_mask = 4
 material = SubResource( 2 )
 scale = Vector2( 0.322072, 0.322072 )
 frames = SubResource( 3 )
-frame = 5
+frame = 4
 playing = true
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+process_parent = true
+physics_process_parent = true

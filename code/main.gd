@@ -1,16 +1,26 @@
 extends Node2D
 
+# warning-ignore:unused_signal
 signal PlayerDead
+# warning-ignore:unused_signal
 signal PlayerWin
+# warning-ignore:unused_signal
 signal FadeInWhite
+# warning-ignore:unused_signal
 signal FadeInBlack
+# warning-ignore:unused_signal
 signal FadeOutWhite
+# warning-ignore:unused_signal
 signal FadeOutBlack
+# warning-ignore:unused_signal
 signal FadeWhiteBlack
+# warning-ignore:unused_signal
 signal FadeBlackWhite
 
+# warning-ignore:unused_signal
 signal FadeEnd
 
+# warning-ignore:unused_signal
 signal fxExplode(position)
 
 enum TIPO_NIVEL {NA,RELOAD, SALIR, MENU, I_MENU, I_INPUT, INPUT, I_INTRO, INTRO, I_JUEGO, JUEGO, I_WIN, WIN, I_LOSE, LOSE}
@@ -42,22 +52,18 @@ func _ready():
 	init_preferencias()
 
 	clear_input()
+# warning-ignore:return_value_discarded
 	connect("PlayerDead",self,"on_Player_Dead")
+# warning-ignore:return_value_discarded
 	connect("PlayerWin",self,"on_Player_Win")
+# warning-ignore:return_value_discarded
 	connect("FadeEnd",self,"on_FadeEnd")
-	
-	var name = OS.get_name()
-	if (name == "Android" or name == "iOS"):
-		connect("TouchpadUpPressed",self,"on_Touchpad_Up_Pressed")
-		connect("TouchpadLeftPressed",self,"on_Touchpad_Left_Pressed")
-		connect("TouchpadRightPressed",self,"on_Touchpad_Right_Pressed")
-		connect("TouchpadDownPressed",self,"on_Touchpad_Down_Pressed")
 	
 	_pausa_menu = UI_Pausa.instance()
 	_pausa_menu.get_child(0).visible = false
 	add_child(_pausa_menu)
 	
-	if (name == "Android" or name == "iOS"):
+	if (isEnableTochPad()):
 		_touchpad = UI_Touchpad.instance()
 		_touchpad.get_child(0).visible = false
 		add_child(_touchpad)
@@ -69,6 +75,7 @@ var _motion = Vector2(0,0)
 var _is_Jump :bool = false
 var _old_pos = Vector2(0,0)
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if _tipo_input == TIPO_INPUT.PROCESS:
 		if Nivel_tipo == TIPO_NIVEL.I_JUEGO:
@@ -76,11 +83,11 @@ func _process(delta):
 				_motion += Vector2(-1, 0)
 			if (Input.is_action_pressed("move_right")):
 				_motion += Vector2(1, 0)
-			
+
 			if _old_pos.x != 0:
 				if abs(_old_pos.x) - 5 > 0:
 					_motion.x = clamp(_old_pos.x,-1,1)
-				
+
 			_old_pos = Vector2(0,0)
 
 			if (Input.is_action_just_pressed("move_up")):
@@ -163,6 +170,7 @@ func Restart_Game():
 		Nivel_tipo = TIPO_NIVEL.RELOAD
 		Main.emit_signal("FadeOutBlack")
 		yield(get_tree().create_timer(2.0),"timeout")
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
 func salir_juego():
@@ -185,29 +193,34 @@ func on_FadeEnd():
 			hide_touchPad()
 			Nivel_tipo = TIPO_NIVEL.I_MENU
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://levels/Otros/Menu.tscn")
 		TIPO_NIVEL.INPUT:
 			hide_touchPad()
 			Nivel_tipo = TIPO_NIVEL.I_INPUT
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			var name = OS.get_name()
-			if name == "Android" or name == "iOS":
+			if isEnableTochPad():
 				Nivel_tipo = TIPO_NIVEL.I_INTRO
+# warning-ignore:return_value_discarded
 				get_tree().change_scene("res://levels/Otros/Intro.tscn")
 			else:
+# warning-ignore:return_value_discarded
 				get_tree().change_scene("res://levels/Otros/Input.tscn")
 		TIPO_NIVEL.INTRO:
 			hide_touchPad()
 			Nivel_tipo = TIPO_NIVEL.I_INTRO
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://levels/Otros/Intro.tscn")
 		TIPO_NIVEL.WIN:
 			hide_touchPad()
 			Nivel_tipo = TIPO_NIVEL.I_WIN
+# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://levels/Otros/PlayerWin.tscn")
 		TIPO_NIVEL.JUEGO:
 			show_touchPad()
 			Nivel_tipo = TIPO_NIVEL.I_JUEGO
+# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://levels/Nivel1/Nivel1.tscn")
 		TIPO_NIVEL.SALIR:
 			hide_touchPad()
@@ -220,7 +233,7 @@ func hide_touchPad():
 func show_touchPad():
 	if _touchpad:
 		_touchpad.visible = true
-		
+
 func cambiar_idioma(index:int)-> void:
 	set_preferencias("idioma","index",index)
 	if index == 0:
@@ -263,3 +276,17 @@ func guadar_preferencias():
 
 func cargar_configuracion():
 	TranslationServer.set_locale(settings["idioma"]["lenguaje"])
+
+func isEnableTochPad()->bool:
+	var name = OS.get_name()
+	if (name == "Android" or name == "iOS" or OS.has_touchscreen_ui_hint()):
+		return true
+	return false
+
+func isGLES2()->bool:
+	var name = OS.get_name()
+	if name == "Android" or name == "iOS" or name == "HTML5":
+		return true
+	#Si se esta exportando para GLES2 descomentar la siguiente linea
+	#return true
+	return false

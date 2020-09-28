@@ -96,10 +96,9 @@ func give_hit():
 func playFXExplode():
 	FXDead.play()
 
-func explode():
-	var name = OS.get_name()
+func explode():	
 	var boom
-	if name == "Android" or name == "iOS" or name == "HTML5":
+	if Main.isGLES2():
 		boom = Explosion_CPU.instance()
 	else:
 		boom = Explosion.instance()

@@ -143,6 +143,8 @@ position = Vector2( -16, 0 )
 position = Vector2( 16, 0 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 0.543178, 0.166855 )
+scale = Vector2( 8.96162, 0.983315 )
 process_parent = true
 physics_process_parent = true
 

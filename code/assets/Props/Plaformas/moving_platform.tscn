@@ -108,6 +108,8 @@ rotation = -3.14159
 playback_process_mode = 0
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 28.1075, 24.2184 )
+scale = Vector2( 13.286, 11.3414 )
 
 [node name="fxMover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

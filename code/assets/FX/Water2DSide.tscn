@@ -21,8 +21,8 @@ shader_param/distortion_amplitude = 0.01
 shader_param/distortion_time_scale = 0.05
 shader_param/water_time_scale = 0.05
 shader_param/reflection_intensity = 1.0
-shader_param/scale = Vector2( 7.49668, 1.51649 )
-shader_param/zoom_y = 0.529732
+shader_param/scale = Vector2( 0.4375, 0.125 )
+shader_param/zoom_y = 0.235969
 shader_param/aspect_ratio = 1.0
 shader_param/tile_factor = 10.0
 shader_param/transform = Basis( 1, 0, 0, 0.291, 1.822, 0.555, 0, 0, 1 )
@@ -41,3 +41,9 @@ position = Vector2( 961.506, 901.105 )
 scale = Vector2( 7.49668, 1.51649 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( -8.19682, 27.9452 )
+scale = Vector2( 15.7825, 36.7698 )
+process_parent = true
+physics_process_parent = true

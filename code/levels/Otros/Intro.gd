@@ -1,8 +1,7 @@
 extends Node2D
 
-func _ready():
-	var name = OS.get_name()
-	if name == "Android" or name == "iOS":
+func _ready():	
+	if Main.isEnableTochPad():
 		$CanvasLayer/Skip.visible = true
 	else:
 		$CanvasLayer/Skip.visible = false

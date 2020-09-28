@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/TileSets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -14,9 +14,7 @@
 [ext_resource path="res://assets/Transiciones/Fade.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/world_environment.tres" type="Environment" id=13]
 [ext_resource path="res://assets/FX/Water2DSide.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/Sonidos/viento.ogg" type="AudioStream" id=15]
 [ext_resource path="res://assets/FX/Dust.tscn" type="PackedScene" id=16]
-[ext_resource path="res://assets/Musica/musica1.ogg" type="AudioStream" id=17]
 
 [node name="colworld" type="Node2D"]
 script = ExtResource( 8 )
@@ -42,7 +40,6 @@ light_mask = 4
 z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 128
 cell_y_sort = true
 collision_bounce = 1.0
 collision_layer = 4
@@ -59,7 +56,6 @@ __meta__ = {
 light_mask = 4
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 128
 cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 131089, 1, 0, 131090, 1, 0, 131091, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262151, 1, 0, 262152, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 1, 0, 327697, 1, 0, 327698, 1, 0, 327699, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0 )
@@ -70,7 +66,6 @@ light_mask = 4
 z_index = 2
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 128
 collision_layer = 4
 collision_mask = 3
 occluder_light_mask = 4
@@ -181,16 +176,6 @@ collision_layer = 2
 
 [node name="spike7" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 72.8698, 104 )
-collision_layer = 2
-
-[node name="spike9" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
-position = Vector2( 54.7969, 72.7465 )
-rotation = -1.57079
-collision_layer = 2
-
-[node name="spike11" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
-position = Vector2( 39.7165, 57.2693 )
-rotation = -4.71238
 collision_layer = 2
 
 [node name="spike8" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
@@ -439,7 +424,7 @@ position = Vector2( 80, 48 )
 
 [node name="Antorcha2" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
 light_mask = 0
-position = Vector2( 80.6889, 144.707 )
+position = Vector2( 80.292, 144 )
 
 [node name="Antorcha4" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
 position = Vector2( 736, 424 )
@@ -479,9 +464,11 @@ ocultar_spikes = false
 
 [node name="Enemigo5" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
 position = Vector2( 664, 328 )
+is_fire_3_bullets = true
 
 [node name="Enemigo6" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
 position = Vector2( 664, 344 )
+is_fire_3_bullets = true
 
 [node name="Agua" type="Node" parent="Level/level1"]
 
@@ -595,14 +582,3 @@ position = Vector2( 632, 256 )
 [node name="Fade" parent="." instance=ExtResource( 12 )]
 
 [node name="Sonido" type="Node" parent="."]
-
-[node name="Viento" type="AudioStreamPlayer" parent="Sonido"]
-stream = ExtResource( 15 )
-volume_db = 3.0
-autoplay = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sonido"]
-stream = ExtResource( 17 )
-volume_db = -15.0
-autoplay = true
-bus = "Musica"

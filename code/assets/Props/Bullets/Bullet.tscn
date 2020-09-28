@@ -30,10 +30,6 @@ polygon = PoolVector2Array( 0, 5.14943, 7.76891, -13.7216, 16, 5.14943 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 0.0658627, 0.122532 )
-scale = Vector2( 0.221545, 0.234739 )
-
 [node name="Light2D" type="Light2D" parent="."]
 light_mask = 0
 position = Vector2( -4.01588, 0.169685 )
@@ -55,4 +51,6 @@ pitch_scale = 2.0
 max_distance = 500.0
 attenuation = 0.258816
 bus = "Fire"
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+process_parent = true
