@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fire Intense Crackle ( Incendio Intenso ) - Sound Effect.mp3-235de6b9216bb5516035c35622a80205.mp3str"
+
+[deps]
+
+source_file="res://assets/Sonidos/Fire Intense Crackle ( Incendio Intenso ) - Sound Effect.mp3"
+dest_files=[ "res://.import/Fire Intense Crackle ( Incendio Intenso ) - Sound Effect.mp3-235de6b9216bb5516035c35622a80205.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

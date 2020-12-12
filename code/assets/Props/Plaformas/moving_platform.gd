@@ -1,5 +1,6 @@
 tool
 extends Node2D
+class_name Plataforma
 
 export var idle_duration: float = 1.0
 
@@ -19,6 +20,8 @@ onready var spikes :=  ($plataform/Spikes)
 onready var timerAparecer := ($plataform/TimerAparecer)
 onready var fxMover := ($fxMover)
 onready var fxDead := ($fxDead)
+
+onready var collision := ($plataform/collision)
 
 var Explosion
 
@@ -57,6 +60,7 @@ func _ready():
 	else:
 		spikes.visible = true
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if Engine.editor_hint:
 		if move_to:
@@ -64,14 +68,16 @@ func _process(delta):
 			if node:
 				_move_to = node.global_position
 				if _tipo_plataforma == TipoPlataforma.Inversa or _tipo_plataforma == TipoPlataforma.Especial:
-					area.global_position = _move_to
-					if _center_zona_dection:
-						var col = area.get_node("CollisionShape2D")
-						col.position.y = 0.0
+					if area:
+						area.global_position = _move_to
+						if _center_zona_dection:
+							var col = area.get_node("CollisionShape2D")
+							col.position.y = 0.0
 		if !_spike:
 			pass
 		else:
-			spikes.visible = true
+			if spikes:
+				spikes.visible = true
 		update()
 
 func _init_tween(loop:=true,idle:=0.0) -> void:
@@ -83,6 +89,7 @@ func _init_tween(loop:=true,idle:=0.0) -> void:
 									_time, Tween.TRANS_LINEAR, 
 									Tween.EASE_IN_OUT, idle_duration + _time)
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if Engine.editor_hint: 
 		return
@@ -138,11 +145,10 @@ func stop_fx():
 	fxMover.stop()
 	pass
 
-
 func Destruir():
 	explode()
-	var col = platform.get_node("collision")
-	col.disabled = true
+	#var col = platform.get_node("collision")
+	collision.disabled = true
 	if _destruible:
 		queue_free()
 	else:
@@ -151,6 +157,7 @@ func Destruir():
 func _on_Area2D_body_exited(body):
 	if _tipo_plataforma == TipoPlataforma.Floja:
 		if body.is_in_group("player"):
+				fxMover.stop()
 				tween.stop_all()
 
 func _on_move_tween_tween_all_completed():
@@ -163,12 +170,13 @@ func _draw():
 
 func _on_Timer_timeout():
 	platform.global_position = _Posicion_Original
+	follow = Vector2.ZERO
 	_is_tween_complete = true
 	anim.play("Aparecer")
 	fxMover.stop()
 	fxDead.stop()
-	var col = platform.get_node("collision")
-	col.disabled = true
+	#var col = platform.get_node("collision")
+	collision.disabled = false
 
 func explode():
 	var boom = Explosion.instance()
@@ -177,8 +185,12 @@ func explode():
 	fxMover.stop()
 	fxDead.play()
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _on_move_tween_tween_completed(object, key):
 	stop_fx()
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _on_move_tween_tween_started(object, key):
 	play_fx()

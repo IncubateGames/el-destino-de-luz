@@ -49,7 +49,8 @@ func fire():
 		var bullet = _bullet.instance()
 		bullet.global_position = _spawn
 		bullet.global_rotation_degrees = _ang
-		get_tree().current_scene.add_child(bullet)
+		get_parent().add_child(bullet)
+		#get_tree().current_scene.add_child(bullet)
 		_fx_fire.play()
 		yield(get_tree().create_timer(0.15),"timeout")
 

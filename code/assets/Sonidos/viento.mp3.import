@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/viento.mp3-075119f623a97d7961b899b1b79b5106.mp3str"
+
+[deps]
+
+source_file="res://assets/Sonidos/viento.mp3"
+dest_files=[ "res://.import/viento.mp3-075119f623a97d7961b899b1b79b5106.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

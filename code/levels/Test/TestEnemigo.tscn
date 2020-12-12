@@ -31,7 +31,6 @@ position = Vector2( 144, 96 )
 
 [node name="Enemigo" parent="." instance=ExtResource( 3 )]
 position = Vector2( 297.615, 132.603 )
-is_fire_3_bullets = false
 
 [node name="Piso" type="StaticBody2D" parent="."]
 position = Vector2( 24, 152 )

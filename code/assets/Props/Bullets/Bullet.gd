@@ -18,16 +18,20 @@ func _ready():
 func _on_spike_body_entered(body):
 	if body.is_in_group("player"):
 		body.give_hit()
+		
+var isAlive := true
 
 func _physics_process(delta):
-	var collision = move_and_collide(velocidad*delta)
-	if collision:
-		explode()
-		if collision.collider.has_method("hit"):
-			collision.collider.hit()
-		
-		yield(get_tree().create_timer(0.1),"timeout")
-		queue_free()
+	if isAlive:
+		var collision = move_and_collide(velocidad*delta)
+		if collision:
+			isAlive = false
+			explode()
+			if collision.collider.has_method("hit"):
+				collision.collider.hit()
+			
+			yield(get_tree().create_timer(0.1),"timeout")
+			queue_free()
 
 func explode():
 	var boom = Explosion.instance()

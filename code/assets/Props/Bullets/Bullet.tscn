@@ -36,7 +36,7 @@ position = Vector2( -4.01588, 0.169685 )
 texture = ExtResource( 2 )
 texture_scale = 0.05
 color = Color( 1, 0, 0, 1 )
-energy = 2.0
+energy = 1.5
 range_item_cull_mask = 7
 
 [node name="Particles2D2" parent="." instance=ExtResource( 4 )]

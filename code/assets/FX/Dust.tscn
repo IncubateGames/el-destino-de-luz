@@ -50,6 +50,8 @@ __meta__ = {
 }
 
 [node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 10, 0.5 )
+light_mask = 0
 amount = 200
 speed_scale = 0.1
 explosiveness = 0.25

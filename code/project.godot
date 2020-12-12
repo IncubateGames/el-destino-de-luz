@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Plataforma",
+"language": "GDScript",
+"path": "res://assets/Props/Plaformas/moving_platform.gd"
+}, {
 "base": "Camera2D",
 "class": "ShakeCamera2D",
 "language": "GDScript",
 "path": "res://player/Camera2D.gd"
 } ]
 _global_script_class_icons={
+"Plataforma": "",
 "ShakeCamera2D": ""
 }
 
@@ -116,15 +122,18 @@ ui_start={
 translations=PoolStringArray( "res://translation data/translation spread sheet.es.translation", "res://translation data/translation spread sheet.en.translation" )
 locale_filter=[ 1, [ "en", "es" ] ]
 
+[physics]
+
+2d/thread_model=2
+
 [rendering]
 
 quality/2d/use_nvidia_rect_flicker_workaround=true
-quality/intended_usage/framebuffer_allocation=0
-quality/intended_usage/framebuffer_allocation.mobile=0
+quality/intended_usage/framebuffer_allocation.mobile=2
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
 vram_compression/import_etc=true
-batching/options/single_rect_fallback=true
+options/api_usage_batching/flag_stream=true
 gles2/compatibility/disable_half_float=true
 batching/precision/uv_contract=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )

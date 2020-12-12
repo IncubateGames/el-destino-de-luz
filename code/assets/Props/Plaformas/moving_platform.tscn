@@ -82,6 +82,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 8.02971, 2.8499e-05 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="plataform"]
+autoplay = "Idle"
 playback_process_mode = 0
 playback_speed = 3.0
 anims/Aparecer = ExtResource( 5 )
@@ -108,8 +109,7 @@ rotation = -3.14159
 playback_process_mode = 0
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-position = Vector2( 28.1075, 24.2184 )
-scale = Vector2( 13.286, 11.3414 )
+scale = Vector2( 10, 10 )
 
 [node name="fxMover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
@@ -122,6 +122,7 @@ stream = ExtResource( 7 )
 volume_db = 10.0
 pitch_scale = 0.5
 bus = "Plataformas"
+
 [connection signal="body_entered" from="plataform/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="plataform/Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="plataform/Area2D2" to="." method="_on_Area2D_body_entered"]

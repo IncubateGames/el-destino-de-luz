@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/Fondos/cover.png" type="Texture" id=3]
 [ext_resource path="res://assets/FX/Glow_Arrow.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Props/Spikes/spike.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/Props/Plaformas/moving_platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/FX/FX.gd" type="Script" id=7]
 [ext_resource path="res://levels/Nivel1/colworld.gd" type="Script" id=8]
 [ext_resource path="res://assets/Props/Antorchas/Antorcha.tscn" type="PackedScene" id=9]
@@ -17,6 +16,7 @@
 [ext_resource path="res://assets/Sonidos/viento.ogg" type="AudioStream" id=15]
 [ext_resource path="res://assets/FX/Dust.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/Musica/musica1.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/Props/Plaformas/plataforma.tscn" type="PackedScene" id=18]
 
 [node name="colworld" type="Node2D"]
 script = ExtResource( 8 )
@@ -35,15 +35,15 @@ position = Vector2( 8, 16 )
 z_index = -1
 color = Color( 0, 0, 0, 1 )
 
-[node name="level1" type="Node" parent="Level"]
+[node name="Nivel" type="Node2D" parent="Level"]
 
-[node name="TileMap_Nivel" type="TileMap" parent="Level/level1"]
+[node name="Titlemaps" type="Node" parent="Level/Nivel"]
+
+[node name="TileMap_Nivel" type="TileMap" parent="Level/Nivel/Titlemaps"]
 light_mask = 4
 z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 128
-cell_y_sort = true
 collision_bounce = 1.0
 collision_layer = 4
 collision_mask = 3
@@ -55,472 +55,486 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TileMap_FondoVidrio" type="TileMap" parent="Level/level1"]
+[node name="TileMap_FondoVidrio" type="TileMap" parent="Level/Nivel/Titlemaps"]
 light_mask = 4
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 128
-cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 131089, 1, 0, 131090, 1, 0, 131091, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262151, 1, 0, 262152, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 1, 0, 327697, 1, 0, 327698, 1, 0, 327699, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0 )
 
-[node name="TileMap_Especial" type="TileMap" parent="Level/level1"]
+[node name="TileMap_Especial" type="TileMap" parent="Level/Nivel/Titlemaps"]
 modulate = Color( 0.996078, 0.964706, 0.964706, 1 )
 light_mask = 4
 z_index = 2
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 128
 collision_layer = 4
 collision_mask = 3
 occluder_light_mask = 4
 format = 1
 tile_data = PoolIntArray( 1245199, 2, 0, 1245200, 2, 0, 1572884, 1610612738, 0, 1572890, 1, 0, 1572899, 1, 0, 1572900, 1, 0, 1572904, 1, 0, 1572905, 1, 0, 1638426, 1, 0, 1638435, 1, 0, 1638436, 1, 0, 1638437, 1, 0, 1638438, 1, 0, 1638439, 1, 0, 1638440, 1, 0, 1638441, 1, 0, 1703953, 2, 0, 1703954, 2, 0, 1703984, 1, 0, 1769520, 1, 0, 1835056, 1, 0, 1900592, 1, 0, 1900593, 1, 0, 1900594, 1, 0, 1966102, 1, 0, 1966103, 1, 0, 1966104, 1, 0, 1966109, 1, 0, 1966110, 1, 0, 1966111, 1, 0, 2031638, 1, 0, 2031639, 1, 0, 2031640, 1, 0, 2031641, 1, 0, 2031642, 1, 0, 2031643, 1, 0, 2031644, 1, 0, 2031645, 1, 0, 2031646, 1, 0, 2031647, 1, 0 )
 
-[node name="Trampas" type="Node" parent="Level/level1"]
+[node name="Trampas" type="Node" parent="Level/Nivel"]
 
-[node name="spike12" parent="Level/level1/Trampas" instance=ExtResource( 5 )]
+[node name="spike12" parent="Level/Nivel/Trampas" instance=ExtResource( 5 )]
 position = Vector2( 40, 472 )
 collision_layer = 2
 
-[node name="spike26" parent="Level/level1/Trampas" instance=ExtResource( 5 )]
+[node name="spike26" parent="Level/Nivel/Trampas" instance=ExtResource( 5 )]
 position = Vector2( 56, 472 )
 collision_layer = 2
 
-[node name="spike27" parent="Level/level1/Trampas" instance=ExtResource( 5 )]
+[node name="spike27" parent="Level/Nivel/Trampas" instance=ExtResource( 5 )]
 position = Vector2( 808, 472 )
 collision_layer = 2
 
-[node name="spike11" parent="Level/level1/Trampas" instance=ExtResource( 5 )]
+[node name="spike11" parent="Level/Nivel/Trampas" instance=ExtResource( 5 )]
 position = Vector2( 696, 88 )
 collision_layer = 2
 
-[node name="spike14" parent="Level/level1/Trampas" instance=ExtResource( 5 )]
+[node name="spike14" parent="Level/Nivel/Trampas" instance=ExtResource( 5 )]
 position = Vector2( 216, 360 )
 collision_layer = 2
 
-[node name="Zona 2" type="Node" parent="Level/level1/Trampas"]
+[node name="Zona 2" type="Node" parent="Level/Nivel/Trampas"]
 
-[node name="spike16" parent="Level/level1/Trampas/Zona 2" instance=ExtResource( 5 )]
+[node name="spike16" parent="Level/Nivel/Trampas/Zona 2" instance=ExtResource( 5 )]
 position = Vector2( 408, 168 )
 collision_layer = 2
 
-[node name="spike31" parent="Level/level1/Trampas/Zona 2" instance=ExtResource( 5 )]
+[node name="spike31" parent="Level/Nivel/Trampas/Zona 2" instance=ExtResource( 5 )]
 position = Vector2( 440, 168 )
 collision_layer = 2
 
-[node name="spike30" parent="Level/level1/Trampas/Zona 2" instance=ExtResource( 5 )]
+[node name="spike30" parent="Level/Nivel/Trampas/Zona 2" instance=ExtResource( 5 )]
 position = Vector2( 472, 168 )
 collision_layer = 2
 
-[node name="spike33" parent="Level/level1/Trampas/Zona 2" instance=ExtResource( 5 )]
+[node name="spike33" parent="Level/Nivel/Trampas/Zona 2" instance=ExtResource( 5 )]
 position = Vector2( 504, 152 )
 collision_layer = 2
 
-[node name="spike5" parent="Level/level1/Trampas/Zona 2" instance=ExtResource( 5 )]
+[node name="spike5" parent="Level/Nivel/Trampas/Zona 2" instance=ExtResource( 5 )]
 position = Vector2( 536, 152 )
 collision_layer = 2
 
-[node name="spike32" parent="Level/level1/Trampas/Zona 2" instance=ExtResource( 5 )]
+[node name="spike32" parent="Level/Nivel/Trampas/Zona 2" instance=ExtResource( 5 )]
 position = Vector2( 568, 152 )
 collision_layer = 2
 
-[node name="spike21" parent="Level/level1/Trampas/Zona 2" instance=ExtResource( 5 )]
+[node name="spike21" parent="Level/Nivel/Trampas/Zona 2" instance=ExtResource( 5 )]
 position = Vector2( 632, 152 )
 collision_layer = 2
 
-[node name="Zona 2 A" type="Node" parent="Level/level1/Trampas"]
+[node name="Zona 2 A" type="Node" parent="Level/Nivel/Trampas"]
 
-[node name="spike9" parent="Level/level1/Trampas/Zona 2 A" instance=ExtResource( 5 )]
+[node name="spike9" parent="Level/Nivel/Trampas/Zona 2 A" instance=ExtResource( 5 )]
 position = Vector2( 408, 72 )
 collision_layer = 2
 
-[node name="spike17" parent="Level/level1/Trampas/Zona 2 A" instance=ExtResource( 5 )]
-position = Vector2( 600, 72 )
+[node name="spike17" parent="Level/Nivel/Trampas/Zona 2 A" instance=ExtResource( 5 )]
+position = Vector2( 600, 71.7 )
 collision_layer = 2
 
-[node name="Zona 1 A" type="Node" parent="Level/level1/Trampas"]
+[node name="Zona 1 A" type="Node" parent="Level/Nivel/Trampas"]
 
-[node name="spike29" parent="Level/level1/Trampas/Zona 1 A" instance=ExtResource( 5 )]
+[node name="spike29" parent="Level/Nivel/Trampas/Zona 1 A" instance=ExtResource( 5 )]
 position = Vector2( 280, 312 )
 rotation = 1.57079
 collision_layer = 2
 
-[node name="spike15" parent="Level/level1/Trampas/Zona 1 A" instance=ExtResource( 5 )]
+[node name="spike15" parent="Level/Nivel/Trampas/Zona 1 A" instance=ExtResource( 5 )]
 position = Vector2( 200, 296 )
 collision_layer = 2
 
-[node name="spike24" parent="Level/level1/Trampas/Zona 1 A" instance=ExtResource( 5 )]
+[node name="spike24" parent="Level/Nivel/Trampas/Zona 1 A" instance=ExtResource( 5 )]
 position = Vector2( 184, 232 )
 rotation = -1.57079
 collision_layer = 2
 
-[node name="spike25" parent="Level/level1/Trampas/Zona 1 A" instance=ExtResource( 5 )]
+[node name="spike25" parent="Level/Nivel/Trampas/Zona 1 A" instance=ExtResource( 5 )]
 position = Vector2( 296, 232 )
 rotation = -1.57079
 collision_layer = 2
 
-[node name="spike23" parent="Level/level1/Trampas/Zona 1 A" instance=ExtResource( 5 )]
+[node name="spike23" parent="Level/Nivel/Trampas/Zona 1 A" instance=ExtResource( 5 )]
 position = Vector2( 216, 184 )
 collision_layer = 2
 
-[node name="Zona 1 B" type="Node" parent="Level/level1/Trampas"]
+[node name="Zona 1 B" type="Node" parent="Level/Nivel/Trampas"]
 
-[node name="spike10" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
+[node name="spike10" parent="Level/Nivel/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 304, 104 )
 collision_layer = 2
 
-[node name="spike22" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
+[node name="spike22" parent="Level/Nivel/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 120, 56 )
 rotation = 1.55241
 collision_layer = 2
 
-[node name="spike6" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
+[node name="spike6" parent="Level/Nivel/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 88.5404, 104 )
 collision_layer = 2
 
-[node name="spike7" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
+[node name="spike7" parent="Level/Nivel/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 72.8698, 104 )
 collision_layer = 2
 
-[node name="spike9" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
+[node name="spike9" parent="Level/Nivel/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 54.7969, 72.7465 )
 rotation = -1.57079
 collision_layer = 2
 
-[node name="spike11" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
+[node name="spike11" parent="Level/Nivel/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 39.7165, 57.2693 )
 rotation = -4.71238
 collision_layer = 2
 
-[node name="spike8" parent="Level/level1/Trampas/Zona 1 B" instance=ExtResource( 5 )]
+[node name="spike8" parent="Level/Nivel/Trampas/Zona 1 B" instance=ExtResource( 5 )]
 position = Vector2( 80, 88 )
 rotation = -3.14159
 collision_layer = 2
 
-[node name="Zona 1" type="Node" parent="Level/level1/Trampas"]
+[node name="Zona 1" type="Node" parent="Level/Nivel/Trampas"]
 
-[node name="spike" parent="Level/level1/Trampas/Zona 1" instance=ExtResource( 5 )]
+[node name="spike" parent="Level/Nivel/Trampas/Zona 1" instance=ExtResource( 5 )]
 position = Vector2( 144, 472 )
 collision_layer = 2
 
-[node name="spike28" parent="Level/level1/Trampas/Zona 1" instance=ExtResource( 5 )]
+[node name="spike28" parent="Level/Nivel/Trampas/Zona 1" instance=ExtResource( 5 )]
 position = Vector2( 792, 472 )
 collision_layer = 2
 
-[node name="spike2" parent="Level/level1/Trampas/Zona 1" instance=ExtResource( 5 )]
+[node name="spike2" parent="Level/Nivel/Trampas/Zona 1" instance=ExtResource( 5 )]
 position = Vector2( 296, 472 )
 collision_layer = 2
 
-[node name="spike3" parent="Level/level1/Trampas/Zona 1" instance=ExtResource( 5 )]
+[node name="spike3" parent="Level/Nivel/Trampas/Zona 1" instance=ExtResource( 5 )]
 position = Vector2( 536, 472 )
 collision_layer = 2
 
-[node name="spike7" parent="Level/level1/Trampas/Zona 1" instance=ExtResource( 5 )]
+[node name="spike7" parent="Level/Nivel/Trampas/Zona 1" instance=ExtResource( 5 )]
 position = Vector2( 312, 360 )
 collision_layer = 2
 
-[node name="Zona 3" type="Node" parent="Level/level1/Trampas"]
+[node name="Zona 3" type="Node" parent="Level/Nivel/Trampas"]
 
-[node name="spike19" parent="Level/level1/Trampas/Zona 3" instance=ExtResource( 5 )]
+[node name="spike19" parent="Level/Nivel/Trampas/Zona 3" instance=ExtResource( 5 )]
 position = Vector2( 776, 248 )
 collision_layer = 2
 
-[node name="spike18" parent="Level/level1/Trampas/Zona 3" instance=ExtResource( 5 )]
+[node name="spike18" parent="Level/Nivel/Trampas/Zona 3" instance=ExtResource( 5 )]
 position = Vector2( 680, 376 )
 collision_layer = 2
 
-[node name="spike21" parent="Level/level1/Trampas/Zona 3" instance=ExtResource( 5 )]
+[node name="spike21" parent="Level/Nivel/Trampas/Zona 3" instance=ExtResource( 5 )]
 position = Vector2( 728, 424 )
 collision_layer = 2
 
-[node name="spike22" parent="Level/level1/Trampas/Zona 3" instance=ExtResource( 5 )]
+[node name="spike22" parent="Level/Nivel/Trampas/Zona 3" instance=ExtResource( 5 )]
 position = Vector2( 744, 424 )
 collision_layer = 2
 
-[node name="spike4" parent="Level/level1/Trampas/Zona 3" instance=ExtResource( 5 )]
+[node name="spike4" parent="Level/Nivel/Trampas/Zona 3" instance=ExtResource( 5 )]
 position = Vector2( 552, 376 )
 collision_layer = 2
 
-[node name="spike8" parent="Level/level1/Trampas/Zona 3" instance=ExtResource( 5 )]
+[node name="spike8" parent="Level/Nivel/Trampas/Zona 3" instance=ExtResource( 5 )]
 position = Vector2( 520.129, 344 )
 collision_layer = 2
 
-[node name="spike20" parent="Level/level1/Trampas/Zona 3" instance=ExtResource( 5 )]
+[node name="spike20" parent="Level/Nivel/Trampas/Zona 3" instance=ExtResource( 5 )]
 position = Vector2( 424, 344 )
 collision_layer = 2
 
-[node name="Plataformas" type="Node" parent="Level/level1"]
+[node name="Agua" type="Node" parent="Level/Nivel"]
 
-[node name="moving_platform2" parent="Level/level1/Plataformas" instance=ExtResource( 6 )]
-position = Vector2( 800, 472 )
-move_to = NodePath("../../../../Level/level1/Plataformas/moving_platform2/Position2D")
-_time = 2.0
+[node name="Pinches" type="Node" parent="Level/Nivel/Agua"]
 
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/moving_platform2"]
-position = Vector2( 0, -384 )
-
-[node name="moving_platform" parent="Level/level1/Plataformas" instance=ExtResource( 6 )]
-position = Vector2( 48, 472 )
-move_to = NodePath("../../../../Level/level1/Plataformas/moving_platform/Position2D")
-_time = 2.0
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/moving_platform"]
-position = Vector2( -0.378571, -303.523 )
-
-[node name="moving_platform3" parent="Level/level1/Plataformas" instance=ExtResource( 6 )]
-position = Vector2( 288, 312 )
-move_to = NodePath("../../../../Level/level1/Plataformas/moving_platform3/Position2D")
-_time = 2.0
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/moving_platform3"]
-position = Vector2( 192, 0 )
-
-[node name="Fragiles" type="Node" parent="Level/level1/Plataformas"]
-
-[node name="moving_platform9" parent="Level/level1/Plataformas/Fragiles" instance=ExtResource( 6 )]
-position = Vector2( 144, 440 )
-idle_duration = 0.0
-move_to = NodePath("../../../../../Level/level1/Plataformas/Fragiles/moving_platform9/Position2D2")
-_destruible = false
-_time = 0.5
-_tipo_plataforma = 2
-
-[node name="Position2D2" type="Position2D" parent="Level/level1/Plataformas/Fragiles/moving_platform9"]
-position = Vector2( 0, 48 )
-
-[node name="moving_platformFragil1" parent="Level/level1/Plataformas/Fragiles" instance=ExtResource( 6 )]
-position = Vector2( 448, 88 )
-idle_duration = 0.2
-move_to = NodePath("../moving_platformFragil1/Position2D")
-_destruible = false
-_time = 1.0
-_tipo_plataforma = 2
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Fragiles/moving_platformFragil1"]
-position = Vector2( 0, 112 )
-
-[node name="moving_platformFragil2" parent="Level/level1/Plataformas/Fragiles" instance=ExtResource( 6 )]
-position = Vector2( 480, 88 )
-idle_duration = 0.2
-move_to = NodePath("../moving_platformFragil2/Position2D")
-_destruible = false
-_time = 1.0
-_tipo_plataforma = 2
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Fragiles/moving_platformFragil2"]
-position = Vector2( 0, 112 )
-
-[node name="moving_platformFragil3" parent="Level/level1/Plataformas/Fragiles" instance=ExtResource( 6 )]
-position = Vector2( 512, 88 )
-idle_duration = 0.2
-move_to = NodePath("../moving_platformFragil3/Position2D")
-_destruible = false
-_time = 1.0
-_tipo_plataforma = 2
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Fragiles/moving_platformFragil3"]
-position = Vector2( 0, 112 )
-
-[node name="moving_platformFragil4" parent="Level/level1/Plataformas/Fragiles" instance=ExtResource( 6 )]
-position = Vector2( 544, 88 )
-idle_duration = 0.2
-move_to = NodePath("../moving_platformFragil4/Position2D")
-_destruible = false
-_time = 1.0
-_tipo_plataforma = 2
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Fragiles/moving_platformFragil4"]
-position = Vector2( 0, 112 )
-
-[node name="moving_platformFragil5" parent="Level/level1/Plataformas/Fragiles" instance=ExtResource( 6 )]
-position = Vector2( 576, 88 )
-idle_duration = 0.2
-move_to = NodePath("../moving_platformFragil5/Position2D")
-_destruible = false
-_time = 1.0
-_tipo_plataforma = 2
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Fragiles/moving_platformFragil5"]
-position = Vector2( 0, 112 )
-
-[node name="Inversas" type="Node" parent="Level/level1/Plataformas"]
-
-[node name="moving_platformInversa" parent="Level/level1/Plataformas/Inversas" instance=ExtResource( 6 )]
-position = Vector2( 224, 232 )
-idle_duration = 0.0
-move_to = NodePath("../moving_platformInversa/Position2D")
-_spike = true
-_center_zona_dection = true
-_time = 0.5
-_tipo_plataforma = 3
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Inversas/moving_platformInversa"]
-position = Vector2( 0, 64 )
-
-[node name="moving_platformInversa2" parent="Level/level1/Plataformas/Inversas" instance=ExtResource( 6 )]
-position = Vector2( 256, 232 )
-idle_duration = 0.0
-move_to = NodePath("../../../../../Level/level1/Plataformas/Inversas/moving_platformInversa2/Position2D")
-_spike = true
-_center_zona_dection = true
-_time = 0.5
-_tipo_plataforma = 3
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Inversas/moving_platformInversa2"]
-position = Vector2( 0, 64 )
-
-[node name="moving_platformInversa3" parent="Level/level1/Plataformas/Inversas" instance=ExtResource( 6 )]
-position = Vector2( 768, 24 )
-idle_duration = 0.0
-move_to = NodePath("../../../../../Level/level1/Plataformas/Inversas/moving_platformInversa3/Position2D")
-_spike = true
-_center_zona_dection = true
-_time = 1.0
-_tipo_plataforma = 3
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Inversas/moving_platformInversa3"]
-position = Vector2( 0, 48 )
-
-[node name="Especial" type="Node" parent="Level/level1/Plataformas"]
-
-[node name="moving_platform4" parent="Level/level1/Plataformas/Especial" instance=ExtResource( 6 )]
-position = Vector2( 96, 248 )
-move_to = NodePath("../../../../../Level/level1/Plataformas/Especial/moving_platform4/Position2D")
-_restart = false
-_center_zona_dection = true
-_time = 2.0
-_tipo_plataforma = 4
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Especial/moving_platform4"]
-position = Vector2( 24, 0 )
-
-[node name="moving_platform5" parent="Level/level1/Plataformas/Especial" instance=ExtResource( 6 )]
-position = Vector2( 640, 280 )
-move_to = NodePath("../../../../../Level/level1/Plataformas/Especial/moving_platform5/Position2D")
-_restart = false
-_center_zona_dection = true
-_time = 2.0
-_tipo_plataforma = 4
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Especial/moving_platform5"]
-position = Vector2( -32, 0 )
-
-[node name="moving_platform6" parent="Level/level1/Plataformas/Especial" instance=ExtResource( 6 )]
-position = Vector2( 568, 320 )
-rotation = -1.57079
-move_to = NodePath("../../../../../Level/level1/Plataformas/Especial/moving_platform6/Position2D")
-_restart = false
-_center_zona_dection = true
-_time = 2.0
-_tipo_plataforma = 4
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Especial/moving_platform6"]
-position = Vector2( 24, -6.10352e-05 )
-
-[node name="Floja" type="Node" parent="Level/level1/Plataformas"]
-
-[node name="moving_platformFlojas1" parent="Level/level1/Plataformas/Floja" instance=ExtResource( 6 )]
-position = Vector2( 728, 280 )
-idle_duration = 0.0
-move_to = NodePath("../../../../../Level/level1/Plataformas/Floja/moving_platformFlojas1/Position2D")
-_restart = false
-_time = 2.0
-_tipo_plataforma = 5
-
-[node name="Position2D" type="Position2D" parent="Level/level1/Plataformas/Floja/moving_platformFlojas1"]
-position = Vector2( 0, 152 )
-
-[node name="Antorchas" type="Node" parent="Level/level1"]
-
-[node name="Orbe" parent="Level/level1/Antorchas" instance=ExtResource( 10 )]
-light_mask = 0
-position = Vector2( 80, 48 )
-
-[node name="Antorcha2" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-light_mask = 0
-position = Vector2( 80.6889, 144.707 )
-
-[node name="Antorcha4" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-position = Vector2( 736, 424 )
-
-[node name="Antorcha9" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-position = Vector2( 320, 424 )
-
-[node name="Antorcha5" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-position = Vector2( 808, 24 )
-
-[node name="Antorcha6" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-position = Vector2( 336, 32 )
-
-[node name="Antorcha7" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-position = Vector2( 312, 136 )
-
-[node name="Antorcha8" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-position = Vector2( 600, 192 )
-
-[node name="Antorcha10" parent="Level/level1/Antorchas" instance=ExtResource( 9 )]
-position = Vector2( 432, 200 )
-
-[node name="Enemigos" type="Node" parent="Level/level1"]
-
-[node name="Enemigo" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
-position = Vector2( 664, 296 )
-
-[node name="Enemigo3" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
-position = Vector2( 200, 120 )
-
-[node name="Enemigo4" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
-position = Vector2( 200, 56 )
-
-[node name="Enemigo2" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
-position = Vector2( 648, 472 )
-ocultar_spikes = false
-
-[node name="Enemigo5" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
-position = Vector2( 664, 328 )
-
-[node name="Enemigo6" parent="Level/level1/Enemigos" instance=ExtResource( 11 )]
-position = Vector2( 664, 344 )
-
-[node name="Agua" type="Node" parent="Level/level1"]
-
-[node name="Pinches" type="Node" parent="Level/level1/Agua"]
-
-[node name="spike13" parent="Level/level1/Agua/Pinches" instance=ExtResource( 5 )]
+[node name="spike13" parent="Level/Nivel/Agua/Pinches" instance=ExtResource( 5 )]
 position = Vector2( 408, 504 )
 z_index = 2
 collision_layer = 2
 
-[node name="spike14" parent="Level/level1/Agua/Pinches" instance=ExtResource( 5 )]
+[node name="spike14" parent="Level/Nivel/Agua/Pinches" instance=ExtResource( 5 )]
 position = Vector2( 424, 504 )
 z_index = 2
 collision_layer = 2
 
-[node name="spike15" parent="Level/level1/Agua/Pinches" instance=ExtResource( 5 )]
+[node name="spike15" parent="Level/Nivel/Agua/Pinches" instance=ExtResource( 5 )]
 position = Vector2( 440, 504 )
 z_index = 2
 collision_layer = 2
 
-[node name="spike16" parent="Level/level1/Agua/Pinches" instance=ExtResource( 5 )]
+[node name="spike16" parent="Level/Nivel/Agua/Pinches" instance=ExtResource( 5 )]
 position = Vector2( 456, 504 )
 z_index = 2
 collision_layer = 2
 
-[node name="WaterPiso" parent="Level/level1/Agua" instance=ExtResource( 14 )]
+[node name="WaterPiso" parent="Level/Nivel/Agua" instance=ExtResource( 14 )]
 light_mask = -2147483644
 position = Vector2( 432, 496 )
 scale = Vector2( 0.625, 0.125 )
 z_index = 1
 
-[node name="WaterPlataforma" parent="Level/level1/Agua" instance=ExtResource( 14 )]
+[node name="WaterPlataforma" parent="Level/Nivel/Agua" instance=ExtResource( 14 )]
 light_mask = -2147483644
 position = Vector2( 616, 400 )
 scale = Vector2( 0.4375, 0.125 )
 z_index = 1
 
+[node name="Enemigos" type="Node" parent="Level/Nivel"]
+
+[node name="Enemigo" parent="Level/Nivel/Enemigos" instance=ExtResource( 11 )]
+position = Vector2( 664, 296 )
+
+[node name="Enemigo3" parent="Level/Nivel/Enemigos" instance=ExtResource( 11 )]
+position = Vector2( 200, 120 )
+
+[node name="Enemigo4" parent="Level/Nivel/Enemigos" instance=ExtResource( 11 )]
+position = Vector2( 200, 56 )
+
+[node name="Enemigo2" parent="Level/Nivel/Enemigos" instance=ExtResource( 11 )]
+position = Vector2( 648, 472 )
+ocultar_spikes = false
+
+[node name="Enemigo5" parent="Level/Nivel/Enemigos" instance=ExtResource( 11 )]
+position = Vector2( 664, 328 )
+
+[node name="Enemigo6" parent="Level/Nivel/Enemigos" instance=ExtResource( 11 )]
+position = Vector2( 664, 344 )
+
+[node name="Antorchas" type="Node" parent="Level/Nivel"]
+
+[node name="Orbe" parent="Level/Nivel/Antorchas" instance=ExtResource( 10 )]
+light_mask = 0
+position = Vector2( 80, 48 )
+
+[node name="Antorcha2" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+light_mask = 0
+position = Vector2( 80.6889, 144.707 )
+
+[node name="Antorcha4" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+position = Vector2( 736, 424 )
+
+[node name="Antorcha9" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 320, 424 )
+
+[node name="Antorcha5" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+position = Vector2( 808, 24 )
+
+[node name="Antorcha6" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+position = Vector2( 336, 32 )
+
+[node name="Antorcha7" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 312, 136 )
+
+[node name="Antorcha8" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+position = Vector2( 600, 192 )
+
+[node name="Antorcha10" parent="Level/Nivel/Antorchas" instance=ExtResource( 9 )]
+position = Vector2( 432, 200 )
+
+[node name="Plataformas" type="Node" parent="Level/Nivel"]
+
+[node name="plataforma" parent="Level/Nivel/Plataformas" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/plataforma" index="0"]
+position = Vector2( 48.1591, 471.943 )
+_time = 2.0
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/plataforma/moving_platform" index="5"]
+position = Vector2( 0, -311.943 )
+
+[node name="plataforma2" parent="Level/Nivel/Plataformas" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/plataforma2" index="0"]
+position = Vector2( 288, 312 )
+_time = 2.0
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/plataforma2/moving_platform" index="5"]
+position = Vector2( 194, 0 )
+
+[node name="plataforma3" parent="Level/Nivel/Plataformas" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/plataforma3" index="0"]
+position = Vector2( 799.841, 472.349 )
+_time = 2.0
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/plataforma3/moving_platform" index="5"]
+position = Vector2( -0.219727, -384.349 )
+
+[node name="Fragiles" type="Node" parent="Level/Nivel/Plataformas"]
+
+[node name="plataforma" parent="Level/Nivel/Plataformas/Fragiles" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Fragiles/plataforma" index="0"]
+position = Vector2( 448.159, 88 )
+idle_duration = 0.5
+_destruible = false
+_time = 1.0
+_tipo_plataforma = 2
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Fragiles/plataforma/moving_platform" index="5"]
+position = Vector2( 0, 81.1845 )
+
+[node name="plataforma2" parent="Level/Nivel/Plataformas/Fragiles" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Fragiles/plataforma2" index="0"]
+position = Vector2( 480, 88 )
+idle_duration = 0.5
+_destruible = false
+_time = 1.0
+_tipo_plataforma = 2
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Fragiles/plataforma2/moving_platform" index="5"]
+position = Vector2( 0, 80 )
+
+[node name="plataforma3" parent="Level/Nivel/Plataformas/Fragiles" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Fragiles/plataforma3" index="0"]
+position = Vector2( 512, 88 )
+idle_duration = 0.5
+_destruible = false
+_time = 1.0
+_tipo_plataforma = 2
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Fragiles/plataforma3/moving_platform" index="5"]
+position = Vector2( -0.378571, 64 )
+
+[node name="plataforma4" parent="Level/Nivel/Plataformas/Fragiles" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Fragiles/plataforma4" index="0"]
+position = Vector2( 544.159, 88 )
+idle_duration = 0.5
+_destruible = false
+_time = 1.0
+_tipo_plataforma = 2
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Fragiles/plataforma4/moving_platform" index="5"]
+position = Vector2( -0.159058, 64 )
+
+[node name="plataforma5" parent="Level/Nivel/Plataformas/Fragiles" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Fragiles/plataforma5" index="0"]
+position = Vector2( 576, 88 )
+idle_duration = 0.5
+_destruible = false
+_time = 1.0
+_tipo_plataforma = 2
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Fragiles/plataforma5/moving_platform" index="5"]
+position = Vector2( -1.07306, 64 )
+
+[node name="plataforma6" parent="Level/Nivel/Plataformas/Fragiles" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Fragiles/plataforma6" index="0"]
+position = Vector2( 144, 440 )
+idle_duration = 0.0
+_destruible = false
+_time = 0.5
+_tipo_plataforma = 2
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Fragiles/plataforma6/moving_platform" index="5"]
+position = Vector2( 0, 40.0683 )
+
+[node name="Inversas" type="Node" parent="Level/Nivel/Plataformas"]
+
+[node name="plataforma" parent="Level/Nivel/Plataformas/Inversas" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Inversas/plataforma" index="0"]
+position = Vector2( 224, 232 )
+idle_duration = 0.0
+_spike = true
+_center_zona_dection = true
+_time = 0.5
+_tipo_plataforma = 3
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Inversas/plataforma/moving_platform" index="5"]
+position = Vector2( 0, 64 )
+
+[node name="plataforma2" parent="Level/Nivel/Plataformas/Inversas" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Inversas/plataforma2" index="0"]
+position = Vector2( 256, 232 )
+idle_duration = 0.0
+_spike = true
+_center_zona_dection = true
+_time = 0.5
+_tipo_plataforma = 3
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Inversas/plataforma2/moving_platform" index="5"]
+position = Vector2( 0, 63.9434 )
+
+[node name="plataforma3" parent="Level/Nivel/Plataformas/Inversas" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Inversas/plataforma3" index="0"]
+position = Vector2( 768, 24 )
+idle_duration = 0.0
+_spike = true
+_center_zona_dection = true
+_time = 1.0
+_tipo_plataforma = 3
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Inversas/plataforma3/moving_platform" index="5"]
+position = Vector2( 0.159058, 48 )
+
+[node name="Especial" type="Node" parent="Level/Nivel/Plataformas"]
+
+[node name="plataforma" parent="Level/Nivel/Plataformas/Especial" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Especial/plataforma" index="0"]
+position = Vector2( 96, 248 )
+_restart = false
+_center_zona_dection = true
+_time = 2.0
+_tipo_plataforma = 4
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Especial/plataforma/moving_platform" index="5"]
+position = Vector2( 24, 0 )
+
+[node name="plataforma2" parent="Level/Nivel/Plataformas/Especial" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Especial/plataforma2" index="0"]
+position = Vector2( 640.159, 280 )
+_restart = false
+_center_zona_dection = true
+_time = 2.0
+_tipo_plataforma = 4
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Especial/plataforma2/moving_platform" index="5"]
+position = Vector2( -32.5376, 0 )
+
+[node name="plataforma3" parent="Level/Nivel/Plataformas/Especial" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Especial/plataforma3" index="0"]
+position = Vector2( 568.271, 320 )
+rotation = -1.5708
+_restart = false
+_center_zona_dection = true
+_time = 2.0
+_tipo_plataforma = 4
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Especial/plataforma3/moving_platform" index="5"]
+position = Vector2( 24.0566, 0 )
+
+[node name="Floja" type="Node" parent="Level/Nivel/Plataformas"]
+
+[node name="plataforma" parent="Level/Nivel/Plataformas/Floja" instance=ExtResource( 18 )]
+
+[node name="moving_platform" parent="Level/Nivel/Plataformas/Floja/plataforma" index="0"]
+position = Vector2( 728, 280 )
+idle_duration = 0.0
+_time = 2.0
+_tipo_plataforma = 5
+
+[node name="Position2D" parent="Level/Nivel/Plataformas/Floja/plataforma/moving_platform" index="5"]
+position = Vector2( 0, 152 )
+
 [node name="player" parent="Level" instance=ExtResource( 2 )]
-position = Vector2( 84.3937, 439.405 )
+position = Vector2( 90.6889, 446 )
 
 [node name="Prueba" type="Node" parent="Level"]
 
@@ -606,3 +620,20 @@ stream = ExtResource( 17 )
 volume_db = -15.0
 autoplay = true
 bus = "Musica"
+
+[editable path="Level/Nivel/Plataformas/plataforma"]
+[editable path="Level/Nivel/Plataformas/plataforma2"]
+[editable path="Level/Nivel/Plataformas/plataforma3"]
+[editable path="Level/Nivel/Plataformas/Fragiles/plataforma"]
+[editable path="Level/Nivel/Plataformas/Fragiles/plataforma2"]
+[editable path="Level/Nivel/Plataformas/Fragiles/plataforma3"]
+[editable path="Level/Nivel/Plataformas/Fragiles/plataforma4"]
+[editable path="Level/Nivel/Plataformas/Fragiles/plataforma5"]
+[editable path="Level/Nivel/Plataformas/Fragiles/plataforma6"]
+[editable path="Level/Nivel/Plataformas/Inversas/plataforma"]
+[editable path="Level/Nivel/Plataformas/Inversas/plataforma2"]
+[editable path="Level/Nivel/Plataformas/Inversas/plataforma3"]
+[editable path="Level/Nivel/Plataformas/Especial/plataforma"]
+[editable path="Level/Nivel/Plataformas/Especial/plataforma2"]
+[editable path="Level/Nivel/Plataformas/Especial/plataforma3"]
+[editable path="Level/Nivel/Plataformas/Floja/plataforma"]

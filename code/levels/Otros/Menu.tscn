@@ -189,5 +189,6 @@ autoplay = true
 [node name="Viento" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
+
 [connection signal="pressed" from="Fade/UI/GUI/Button" to="." method="_on_Button_pressed"]
 [connection signal="item_selected" from="Fade/UI/GUI/Idioma/HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]
